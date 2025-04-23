@@ -5,6 +5,9 @@ import LoginPage from "./components/LoginPage";
 import AlertsPage from "./components/AlertsPage";
 import AlertDetailPage from "./components/AlertDetailPage";
 import UserManagementPage from "./components/UserManagementPage";
+import DeviceManagementPage from "./components/DeviceManagementPage";
+import VideoFeed from "./components/VideoFeed";
+import RolePermissionManager from "./components/RolePermissionManager";
 import "./style.css";
 
 const App = () => {
@@ -44,7 +47,10 @@ const App = () => {
             <Routes>
               <Route path="/alerts" element={<AlertsPage />} />
               <Route path="/user-management" element={<UserManagementPage />} />
-			  <Route path="/alert-detail/:alertId" element={<AlertDetailPage />} /> {/* Make sure this path is correct */}
+			  <Route path="/role-management" element={<RolePermissionManager />} />
+			  <Route path="/device-management" element={<DeviceManagementPage />} />
+			  <Route path="/alert-detail/:alertId" element={<AlertDetailPage />} /> {}
+			  <Route path="/video-feed" element={<VideoFeed />} /> {/* <-- New line */}
               <Route path="*" element={<Navigate to="/alerts" />} />
             </Routes>
           </div>
