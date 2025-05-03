@@ -22,7 +22,7 @@ const AlertsPage = () => {
       if (!token) return;
 
       const response = await axios.get(
-        `${config.API_BASE_URL}/api/alerts/details?page=${pageNumber}&size=${pageSize}&sortBy=alertDatetime&direction=desc`,
+        `${config.API_BASE_URL}/api/alerts?page=${pageNumber}&size=${pageSize}&sortBy=alertDatetime&direction=desc`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

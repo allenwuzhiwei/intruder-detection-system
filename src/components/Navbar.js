@@ -25,6 +25,7 @@ const Navbar = ({ onLogout, role, userName }) => {
 		  <Nav.Link as={Link} to="/role-management">Role Permission Manager</Nav.Link>
 		  <Nav.Link as={Link} to="/device-management">Device Management</Nav.Link>
 		  <Nav.Link as={Link} to="/video-feed">Video Feed</Nav.Link>
+		  <Nav.Link as={Link} to="/webcam">Webcam</Nav.Link>	
           <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
         </Nav>
       </Container>

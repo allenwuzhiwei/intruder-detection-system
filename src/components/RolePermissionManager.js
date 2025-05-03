@@ -113,7 +113,7 @@ const RolePermissionManager = () => {
       const token = getValidAccessTokenOrRedirect(navigate);
       if (!token) return;
       await axios.post(
-        '${config.API_BASE_URL}/api/role-permissions',
+        'http://localhost:8080/api/role-permissions',
         {
           roleId: selectedRoleId,
           permissionIds: assignedPermissionIds,

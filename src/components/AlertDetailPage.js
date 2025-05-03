@@ -75,9 +75,6 @@ const AlertDetailPage = () => {
             <strong>Message:</strong> {first.alertMessage}
           </Card.Text>
           <Card.Text>
-            <strong>Type:</strong> {first.alertType}
-          </Card.Text>
-          <Card.Text>
             <strong>Severity:</strong> {first.severityLevel}
           </Card.Text>
           <Card.Text>
@@ -114,7 +111,7 @@ const AlertDetailPage = () => {
                       <video controls className="w-100">
                         <source
                           src={vid.mediaUrl}
-                          type={`Video/${vid.fileFormat}`}
+                          type="video/mp4"
                         />
                         Your browser does not support the video tag.
                       </video>

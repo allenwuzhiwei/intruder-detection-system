@@ -7,6 +7,7 @@ import AlertDetailPage from "./components/AlertDetailPage";
 import UserManagementPage from "./components/UserManagementPage";
 import DeviceManagementPage from "./components/DeviceManagementPage";
 import VideoFeed from "./components/VideoFeed";
+import Webcam from "./components/Webcam";
 import RolePermissionManager from "./components/RolePermissionManager";
 import "./style.css";
 
@@ -51,6 +52,7 @@ const App = () => {
 			  <Route path="/device-management" element={<DeviceManagementPage />} />
 			  <Route path="/alert-detail/:alertId" element={<AlertDetailPage />} /> {}
 			  <Route path="/video-feed" element={<VideoFeed />} /> {/* <-- New line */}
+			  <Route path="/webcam" element={<Webcam />} /> {}
               <Route path="*" element={<Navigate to="/alerts" />} />
             </Routes>
           </div>

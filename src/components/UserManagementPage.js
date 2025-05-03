@@ -177,11 +177,19 @@ const UserManagementPage = () => {
       console.error('Search failed:', err);
     }
   };
-
-  const handleCancelEdit = () => {
+const handleCancelEdit = () => {
     setEditUserId(null);
     setEditUserData({});
   };
+ const handleEditClick = (user) => {
+    setEditUserId(user.userId);
+    setEditUserData({ ...user });
+  };
+
+  const handleEditChange = (field, value) => {
+    setEditUserData({ ...editUserData, [field]: value });
+  };
+
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -281,16 +289,48 @@ const UserManagementPage = () => {
           {currentUsers.map((user) => (
             <tr key={user.userId}>
               <td>{user.userId}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phoneNumber}</td>
-              <td>{user.role ? user.role.roleName : 'N/A'}</td>
-              <td>{user.status}</td>
-              <td>{user.createUser}</td>
-              <td>{user.createDatetime}</td>
-              <td>
-                <button onClick={() => handleDelete(user.userId)}>Delete</button>
-              </td>
+              {editUserId === user.userId ? (
+                <>
+                  <td><input value={editUserData.username} onChange={(e) => handleEditChange('username', e.target.value)} /></td>
+                  <td><input value={editUserData.email} onChange={(e) => handleEditChange('email', e.target.value)} /></td>
+                  <td><input value={editUserData.phoneNumber} onChange={(e) => handleEditChange('phoneNumber', e.target.value)} /></td>
+                  <td>
+                    <select value={editUserData.roleId} onChange={(e) => handleEditChange('roleId', e.target.value)}>
+                      {roles.map((role) => (
+                        <option key={role.roleId} value={role.roleId}>
+                          {role.roleName}
+                        </option>
+                      ))}
+                    </select>
+                  </td>
+                  <td>
+                    <select value={editUserData.status} onChange={(e) => handleEditChange('status', e.target.value)}>
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </td>
+                  <td>{user.createUser}</td>
+                  <td>{user.createDatetime}</td>
+                  <td>
+                    <button onClick={handleUpdateUser}>Save</button>
+                    <button onClick={handleCancelEdit}>Cancel</button>
+                  </td>
+                </>
+              ) : (
+                <>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.phoneNumber}</td>
+                  <td>{user.roleName}</td>
+                  <td>{user.status}</td>
+                  <td>{user.createUser}</td>
+                  <td>{user.createDatetime}</td>
+                  <td>
+                    <button onClick={() => handleEditClick(user)}>Edit</button>
+                    <button onClick={() => handleDelete(user.userId)}>Delete</button>
+                  </td>
+                </>
+              )}
             </tr>
           ))}
         </tbody>
