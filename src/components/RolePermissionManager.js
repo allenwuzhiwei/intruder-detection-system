@@ -167,7 +167,7 @@ const RolePermissionManager = () => {
                     checked={assignedPermissionIds.includes(permission.permissionId)}
                     onChange={() => togglePermission(permission.permissionId)}
                   />
-                  <span className="ml-2">{permission.permissionName}</span>
+                  <span className="ml-2">{permission.description}</span>
                 </label>
               </div>
             ))}
